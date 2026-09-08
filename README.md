@@ -1,16 +1,68 @@
-# React + Vite
+# Festava Live
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + Vite + Tailwind CSS rebuild of the Festava Live landing page (Hero, About,
+Artists, Schedule, Pricing, Contact), structured to be modular and easy to extend.
 
-Currently, two official plugins are available:
+## Run it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Build for production with `npm run build`; preview that build with `npm run preview`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Folder structure
 
-## Expanding the Oxlint configuration
+```text
+src/
+├── assets/            images, icons, fonts
+├── components/
+│   ├── common/         generic, reusable UI: Button, Card, Badge, Field, SectionTitle...
+│   ├── layout/          Navbar, Footer
+│   └── sections/         one folder per page section (Hero, About, Artists, Schedule, Pricing, Contact)
+├── data/               editable content — dates, copy, lineup, schedule, pricing
+├── hooks/              reusable logic (useScroll, useDisclosure, useContactForm)
+├── utils/               small pure helpers (cn, formatPrice, formatEventLabel)
+├── layouts/            MainLayout wraps every page with Navbar + Footer
+├── pages/               Home composes the sections in order
+├── App.jsx              app shell — only routing/layout, no content
+└── main.jsx             React entry point
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Editing content
+
+Nothing is hardcoded inside components. To change what's on the page, edit the
+matching file in `src/data/`:
+
+| File | Controls |
+|---|---|
+| `profile.js` | Festival name, tagline, dates, location, about copy, contact info |
+| `navigation.js` | Navbar / footer links |
+| `artists.js` | Lineup photos, names, roles |
+| `schedule.js` | Days, events, times, stages |
+| `pricing.js` | Ticket tiers, features, price |
+| `socialLinks.js` | Social icon links |
+
+## Artist photos
+
+`artists.js` currently points to placeholder images (`picsum.photos`) so the
+gallery renders immediately. Drop real photos into `src/assets/images/` and
+update each artist's `image` field, e.g. `/src/assets/images/artist-1.jpg`.
+
+## Design tokens
+
+Colors, radius and shadows are defined once as CSS variables in `src/index.css`
+and mapped in `tailwind.config.js` (`bg`, `surface`, `primary`, `secondary`,
+`text`, `muted`, `border`...). Change a value in one place to re-theme the
+whole site. Display type is "Unbounded", body type is "Inter" (loaded via
+Google Fonts in `index.html`).
+
+## Adding a new section
+
+1. Decide if it's a full page section or a reusable piece.
+2. Section → new folder in `components/sections/<Name>/<Name>.jsx`.
+3. Static content → add a file in `data/`.
+4. Reusable logic → `hooks/` (stateful) or `utils/` (pure functions).
+5. Reusable UI → `components/common/`.
+6. Import and place it in `pages/Home.jsx`. Never add section markup to `App.jsx`.
