@@ -1,35 +1,32 @@
-/** @type {import('tailwindcss').Config} */
+/** Tailwind konfig — semua custom warna & shadow tema mall di sini */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        bg: "var(--color-bg)",
-        surface: "var(--color-surface)",
-        "surface-alt": "var(--color-surface-alt)",
-        primary: "var(--color-primary)",
-        "primary-dim": "var(--color-primary-dim)",
-        secondary: "var(--color-secondary)",
-        text: "var(--color-text)",
-        muted: "var(--color-muted)",
-        border: "var(--color-border)",
+        brand: {
+          orange: '#ff6b2b',
+          yellow: '#ffc94b',
+          dark: '#150a1f',
+          purple: '#2b1033',
+          maroon: '#3d0f2e',
+          pink: '#fde4ee',
+          mint: '#dcf5e2',
+          beige: '#f7efe2',
+          cream: '#faf6f1',
+          ink: '#221f35',
+          gray: '#2e2e38'
+        }
       },
       fontFamily: {
-        display: ["Unbounded", "sans-serif"],
-        body: ["Inter", "sans-serif"],
-      },
-      borderRadius: {
-        card: "1.25rem",
-        pill: "999px",
+        display: ['Outfit', 'system-ui', 'sans-serif'],
+        body: ['Outfit', 'system-ui', 'sans-serif']
       },
       boxShadow: {
-        glow: "0 0 60px -15px var(--color-primary)",
-      },
-      backgroundImage: {
-        "stage-gradient":
-          "radial-gradient(120% 120% at 50% -10%, var(--color-surface-alt) 0%, var(--color-bg) 60%)",
-      },
-    },
+        glow: '0 0 30px rgba(255, 107, 43, 0.35)',
+        card: '0 14px 32px rgba(21, 10, 31, 0.16)'
+      }
+    }
   },
-  plugins: [],
-};
+  plugins: []
+}

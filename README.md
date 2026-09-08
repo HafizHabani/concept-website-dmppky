@@ -1,68 +1,61 @@
-# Festava Live
+# 🏬 Duta Mall Palangka Raya — Single-Page Mall Dashboard (React + Tailwind)
 
-React + Vite + Tailwind CSS rebuild of the Festava Live landing page (Hero, About,
-Artists, Schedule, Pricing, Contact), structured to be modular and easy to extend.
+Single-scroll mall dashboard website, UI konsep diadapt dari template **Festava Live** (navbar dark maroon/purple, accent orange `#ff6b2b`, yellow top-bar, schedule grid, pricing cards dotted border, contact form/map toggle, footer orange band).
 
-## Run it
+**Content**: real facts of Duta Mall Palangka Raya (Kalimantan Tengah) — soft opening 3 Okt 2025, Govindo Group developer, PT Tata Optima Property management, 6 floors / 150.000 m² / 200+ stores, real tenants per floor (Cermart, MR DIY, Maybank, Puma, Adidas, Sociolla, XXI Cinema Premiere…), FUGO Hotel 4★ 288 kamar 2026, cashless parking E-money/QRIS, open daily 10.00–22.00 WIB.
+
+## 🚀 Run
 
 ```bash
+cd grandmetro-mall
 npm install
 npm run dev
 ```
 
-Build for production with `npm run build`; preview that build with `npm run preview`.
+Auto-open di `http://localhost:3000`. Build production: `npm run build` → folder `dist/`.
 
-## Folder structure
+## 🧱 Arsitektur (important!)
 
-```text
+```
 src/
-├── assets/            images, icons, fonts
-├── components/
-│   ├── common/         generic, reusable UI: Button, Card, Badge, Field, SectionTitle...
-│   ├── layout/          Navbar, Footer
-│   └── sections/         one folder per page section (Hero, About, Artists, Schedule, Pricing, Contact)
-├── data/               editable content — dates, copy, lineup, schedule, pricing
-├── hooks/              reusable logic (useScroll, useDisclosure, useContactForm)
-├── utils/               small pure helpers (cn, formatPrice, formatEventLabel)
-├── layouts/            MainLayout wraps every page with Navbar + Footer
-├── pages/               Home composes the sections in order
-├── App.jsx              app shell — only routing/layout, no content
-└── main.jsx             React entry point
+├── App.jsx                      ← DASHBOARD: hanya import + panggil
+├── data/                        ← 📦 SEMUA const data terpisah di sini
+│   ├── siteData.jsx             ←   brand, navLinks, hero, stats, marquee, footer
+│   ├── tenantsData.jsx          ←   store directory + categories
+│   ├── eventsData.jsx           ←   event schedule grid
+│   ├── promoData.jsx            ←   countdown, offers, deals
+│   ├── newsData.jsx             ←   artikel
+│   ├── aboutData.jsx            ←   about content
+│   └── contactData.jsx          ←   form fields + map
+├── functions/                   ← ⚙️ SEMUA function terpisah di sini
+│   ├── animations.jsx           ←   useInView, Reveal, Stagger, Marquee
+│   ├── navigation.jsx           ←   scrollToSection, useScrollSpy, useScrolled
+│   ├── counters.jsx             ←   Counter (animated number)
+│   ├── countdown.jsx            ←   CountdownTimer
+│   ├── media.jsx                ←   SafeImage (fallback gradient + emoji)
+│   └── helpers.jsx              ←   pad2, formatNumber, getScrollY, clamp
+└── components/
+    ├── TopBar.jsx, Navbar.jsx, Footer.jsx, BackToTop.jsx
+    └── sections/                ← each section = 1 jsx
+        ├── Home.jsx  Tenants.jsx  Events.jsx  Promo.jsx
+        └── News.jsx  AboutUs.jsx  Contact.jsx
 ```
 
-## Editing content
+**Rule:** section components tidak berisi data — mereka `import` const data dari `data/` dan `import` komponent/function dari `functions/`, lalu hanya **panggil**. Edit content → edit `data/*.jsx`, no need touch section JSX.
 
-Nothing is hardcoded inside components. To change what's on the page, edit the
-matching file in `src/data/`:
+## 🎪 Feature & Animation
 
-| File | Controls |
-|---|---|
-| `profile.js` | Festival name, tagline, dates, location, about copy, contact info |
-| `navigation.js` | Navbar / footer links |
-| `artists.js` | Lineup photos, names, roles |
-| `schedule.js` | Days, events, times, stages |
-| `pricing.js` | Ticket tiers, features, price |
-| `socialLinks.js` | Social icon links |
+- Single scroll + smooth scrollspy (navbar highlight aktif section)
+- Navbar sticky → solid dark + blur after scroll; mobile hamburger
+- Hero: gradient-animated word, floating orbs, glass info chips, animated counters
+- Marquee ticker promo strip
+- Tenants: kategori filter chips + hover-lift cards
+- Events: schedule grid 3 days × 3 zones (mirror Festava, pastel empty cells)
+- Promo: live countdown timer (digits pop every second), 2 offers card + 3 deals
+- News: cards (fallback image / gradient + emoji)
+- Contact: toggle Contact Form ⇄ Live Map (OSM embed), form → success state
+- Back-to-top button dengan ping ring
 
-## Artist photos
+## 🖼️ Images
 
-`artists.js` currently points to placeholder images (`picsum.photos`) so the
-gallery renders immediately. Drop real photos into `src/assets/images/` and
-update each artist's `image` field, e.g. `/src/assets/images/artist-1.jpg`.
-
-## Design tokens
-
-Colors, radius and shadows are defined once as CSS variables in `src/index.css`
-and mapped in `tailwind.config.js` (`bg`, `surface`, `primary`, `secondary`,
-`text`, `muted`, `border`...). Change a value in one place to re-theme the
-whole site. Display type is "Unbounded", body type is "Inter" (loaded via
-Google Fonts in `index.html`).
-
-## Adding a new section
-
-1. Decide if it's a full page section or a reusable piece.
-2. Section → new folder in `components/sections/<Name>/<Name>.jsx`.
-3. Static content → add a file in `data/`.
-4. Reusable logic → `hooks/` (stateful) or `utils/` (pure functions).
-5. Reusable UI → `components/common/`.
-6. Import and place it in `pages/Home.jsx`. Never add section markup to `App.jsx`.
+Placeholder foto dari `picsum.photos` (random). Di `data/*.jsx` set `bg`/`img` field — replace dengan URL foto mall sendiri. Jika offline, `SafeImage` auto-switch ke gradient + emoji (100% offline-safe).
