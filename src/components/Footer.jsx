@@ -32,7 +32,7 @@ export default function Footer() {
             <form onSubmit={join} className="flex items-center gap-2">
               {joined ? (
                 <p className="bg-white/95 text-brand-navyDark font-bold text-sm rounded-full px-5 py-2.5">
-                  🎉 Lu gabung! Kasiki inbox lu.
+                  🎉 Terimakasih sudah bergabung!
                 </p>
               ) : (
                 <>

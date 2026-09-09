@@ -43,9 +43,9 @@ export const SITE = {
 
   stats: [
     { icon: '🏢', end: 6, suffix: '', label: 'Lantai Ritel' },
-    { icon: '🛍️', end: 200, suffix: '+', label: 'Tenants' },
-    { icon: '📏', end: 150000, suffix: ' m²', label: 'Luas Lantai' },
-    { icon: '🏨', end: 288, suffix: '', label: 'Open Booth' }
+    { icon: '🛍️', end: 60, suffix: '+', label: 'Tenants' },
+    { icon: '📏', end: 150000, suffix: ' m²', label: 'Luas Parkiran' },
+    { icon: '🏨', end: 30, suffix: '', label: 'Open Booth' }
   ],
 
   socials: [
@@ -57,22 +57,22 @@ export const SITE = {
 
   footer: {
     linksLabel: 'Link',
-    questionTitle: 'Kilau gatu sual?',
+    questionTitle: 'Hubungi Kami',
     phone: '0511 327 8888',
     email: 'management@dutamallpky.co.id',
     locationTitle: 'Lokasi',
     address: 'Jl. Adonis Samad No. 8, Langkai, Pahandut, Palangka Raya, Kalimantan Tengah 74874, Indonesia',
     mapLabel: 'Map Kami →',
     newsletter: {
-      label: 'Gabung newsletter mall',
-      placeholder: 'Adres email lu',
+      label: 'Bergabung Bersama Kami',
+      placeholder: 'Address email',
       button: 'Gabung'
     },
     copyright: 'Copyright © 2026 Duta Mall Palangka Raya · Govindo Group',
     legal: [
-      { label: 'Termin & Kondisi', target: '#' },
+      { label: 'Term & Condition', target: '#' },
       { label: 'Policy Privasi', target: '#' },
-      { label: 'Feedback Lu', target: '#' }
+      { label: 'Feedback', target: '#' }
     ]
   }
 }
