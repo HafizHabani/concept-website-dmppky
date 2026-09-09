@@ -2,8 +2,6 @@
 
 Single-scroll mall website untuk **Duta Mall Palangka Raya** (Kalimantan Tengah). Tema **navy + gold** (`#10315f` / `#081b36` + aksen `#e2aa45`), logo image, dan section dinamis: directory tenant per lantai, video looping event, fasilitas mall, serta contact form + map live berdampingan.
 
-**Content**: fakta real Duta Mall Palangka Raya — soft opening 3 Okt 2025, Govindo Group developer, 6 lantai / 150.000 m² / 200+ brand, 65 tenant terdaftar per lantai, FUGO Hotel 4★ 288 kamar 2026, parkir cashless, buka harian 10.00–22.00 WIB.
-
 ## 🚀 Run
 
 ```bash
@@ -33,7 +31,7 @@ src/
 │   ├── counters.jsx             ←   Counter (animated number)
 │   ├── media.jsx                ←   SafeImage (fallback gradient + emoji)
 │   └── helpers.jsx              ←   getScrollY, formatNumber
-├── assets/                      ← 🖼️ logo-dmpky.png, COE.mp4 (looping video Events)
+├── assets/                      ← 🖼️logo-dmpky.png, COE.mp4 (looping video Events)
 └── components/
     ├── TopBar.jsx, Navbar.jsx, Footer.jsx, BackToTop.jsx
     └── sections/                ← each section = 1 jsx
