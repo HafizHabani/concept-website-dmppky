@@ -1,18 +1,18 @@
-# 🏬 Duta Mall Palangka Raya — Single-Page Mall Dashboard (React + Tailwind)
+# 🏬 Duta Mall Palangka Raya — Single-Page Website (React + Tailwind)
 
-Single-scroll mall dashboard website, UI konsep diadapt dari template **Festava Live** (navbar dark maroon/purple, accent orange `#ff6b2b`, yellow top-bar, schedule grid, pricing cards dotted border, contact form/map toggle, footer orange band).
+Single-scroll mall website untuk **Duta Mall Palangka Raya** (Kalimantan Tengah). Tema **navy + gold** (`#10315f` / `#081b36` + aksen `#e2aa45`), logo image, dan section dinamis: directory tenant per lantai, video looping event, fasilitas mall, serta contact form + map live berdampingan.
 
-**Content**: real facts of Duta Mall Palangka Raya (Kalimantan Tengah) — soft opening 3 Okt 2025, Govindo Group developer, PT Tata Optima Property management, 6 floors / 150.000 m² / 200+ stores, real tenants per floor (Cermart, MR DIY, Maybank, Puma, Adidas, Sociolla, XXI Cinema Premiere…), FUGO Hotel 4★ 288 kamar 2026, cashless parking E-money/QRIS, open daily 10.00–22.00 WIB.
+**Content**: fakta real Duta Mall Palangka Raya — soft opening 3 Okt 2025, Govindo Group developer, 6 lantai / 150.000 m² / 200+ brand, 65 tenant terdaftar per lantai, FUGO Hotel 4★ 288 kamar 2026, parkir cashless, buka harian 10.00–22.00 WIB.
 
 ## 🚀 Run
 
 ```bash
-cd grandmetro-mall
+cd concept-website-dmppky
 npm install
 npm run dev
 ```
 
-Auto-open di `http://localhost:3000`. Build production: `npm run build` → folder `dist/`.
+Dev server default Vite (`http://localhost:5173`). Build production: `npm run build` → folder `dist/` (base path `/concept-website-dmppky/`). Preview: `npm run preview`.
 
 ## 🧱 Arsitektur (important!)
 
@@ -20,42 +20,42 @@ Auto-open di `http://localhost:3000`. Build production: `npm run build` → fold
 src/
 ├── App.jsx                      ← DASHBOARD: hanya import + panggil
 ├── data/                        ← 📦 SEMUA const data terpisah di sini
-│   ├── siteData.jsx             ←   brand, navLinks, hero, stats, marquee, footer
-│   ├── tenantsData.jsx          ←   store directory + categories
-│   ├── eventsData.jsx           ←   event schedule grid
-│   ├── promoData.jsx            ←   countdown, offers, deals
+│   ├── siteData.jsx             ←   brand, navLinks, hero, stats, topBar, footer
+│   ├── tenantsData.jsx          ←   65 tenant per lantai (LG/GF/UG/1F/2F/3F) + kategori
+│   ├── eventsData.jsx           ←   header section Events (konten video)
+│   ├── facilitiesData.jsx       ←   11 fasilitas di dalam mall (Our Facility)
 │   ├── newsData.jsx             ←   artikel
 │   ├── aboutData.jsx            ←   about content
-│   └── contactData.jsx          ←   form fields + map
+│   └── contactData.jsx          ←   form fields + live map
 ├── functions/                   ← ⚙️ SEMUA function terpisah di sini
-│   ├── animations.jsx           ←   useInView, Reveal, Stagger, Marquee
-│   ├── navigation.jsx           ←   scrollToSection, useScrollSpy, useScrolled
+│   ├── animations.jsx           ←   useInView, Reveal, Stagger
+│   ├── navigation.jsx           ←   scrollToSection, scrollToTop, useScrollSpy, useScrolled
 │   ├── counters.jsx             ←   Counter (animated number)
-│   ├── countdown.jsx            ←   CountdownTimer
 │   ├── media.jsx                ←   SafeImage (fallback gradient + emoji)
-│   └── helpers.jsx              ←   pad2, formatNumber, getScrollY, clamp
+│   └── helpers.jsx              ←   getScrollY, formatNumber
+├── assets/                      ← 🖼️ logo-dmpky.png, COE.mp4 (looping video Events)
 └── components/
     ├── TopBar.jsx, Navbar.jsx, Footer.jsx, BackToTop.jsx
     └── sections/                ← each section = 1 jsx
-        ├── Home.jsx  Tenants.jsx  Events.jsx  Promo.jsx
+        ├── Home.jsx  Tenants.jsx  Events.jsx  Facilities.jsx
         └── News.jsx  AboutUs.jsx  Contact.jsx
 ```
 
-**Rule:** section components tidak berisi data — mereka `import` const data dari `data/` dan `import` komponent/function dari `functions/`, lalu hanya **panggil**. Edit content → edit `data/*.jsx`, no need touch section JSX.
+**Rule:** section components tidak berisi data — mereka `import` const data dari `data/` dan `import` component/function dari `functions/`, lalu hanya **panggil**. Edit content → edit `data/*.jsx`, no need to touch section JSX.
 
 ## 🎪 Feature & Animation
 
-- Single scroll + smooth scrollspy (navbar highlight aktif section)
-- Navbar sticky → solid dark + blur after scroll; mobile hamburger
-- Hero: gradient-animated word, floating orbs, glass info chips, animated counters
-- Marquee ticker promo strip
-- Tenants: kategori filter chips + hover-lift cards
-- Events: schedule grid 3 days × 3 zones (mirror Festava, pastel empty cells)
-- Promo: live countdown timer (digits pop every second), 2 offers card + 3 deals
-- News: cards (fallback image / gradient + emoji)
-- Contact: toggle Contact Form ⇄ Live Map (OSM embed), form → success state
-- Back-to-top button dengan ping ring
+- **Tema navy + gold** — konsisten di seluruh section (tombol, badge, hover, gradient)
+- **Logo image** — `src/assets/logo-dmpky.png`, dipakai di Navbar & Footer (bukan SVG storefront lagi)
+- **Tenants (directory)** — filter per **lantai** (LG, GF, UG, 1F, 2F, 3F) + tombol "Lihat Semua Tenant" (hide/show awal 8 card), kartu bergradient per kategori
+- **Events** — video looping `src/assets/COE.mp4` (autoplay, muted, playsinline, tanpa controls & tanpa audio)
+- **Our Facility** — 11 kartu fasilitas mall (Information, Hotel, ATM Center, Ladies Parking, Disabled, Clinic, Nursery, Musholla, Parking, Toilet, Sitting Area) dengan badge lantai
+- **News** — cards artikel (fallback image / gradient + emoji, offline-safe)
+- **Contact** — form + **live map side-by-side** (OSM embed, tanpa toggle), form → success state
+- **Back-to-top** button dengan ping ring
 
-## 🖼️ Images
+## 🖼️ Images & Media
 
-Placeholder foto dari `picsum.photos` (random). Di `data/*.jsx` set `bg`/`img` field — replace dengan URL foto mall sendiri. Jika offline, `SafeImage` auto-switch ke gradient + emoji (100% offline-safe).
+- Foto hero/news dari URL eksternal (Wikimedia/placeholder). Di `data/*.jsx` set `bg`/`img` field — replace dengan URL foto sendiri. Jika offline, `SafeImage` auto-switch ke gradient + emoji (100% offline-safe).
+- Logo & video disimpan lokal di `src/assets/` dan di-import langsung oleh komponen.
+- Video COE (~9 MB) otomatis di-hash & di-bundle Vite saat build.
