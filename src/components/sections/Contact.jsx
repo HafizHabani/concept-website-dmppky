@@ -25,7 +25,7 @@ export default function Contact() {
     <section id="contact" className="relative bg-brand-cream scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 py-24">
         <Reveal className="text-center">
-          <p className="text-brand-navy text-xs font-bold tracking-[0.3em] uppercase">Kontakt Kami</p>
+          <p className="text-brand-navy text-xs font-bold tracking-[0.3em] uppercase">Kontak Kami</p>
           <h2 className="mt-3 text-4xl md:text-5xl font-black text-brand-navyDark">{CONTACT.title}</h2>
           <p className="mt-4 max-w-2xl mx-auto text-brand-navyDark/60">{CONTACT.subtitle}</p>
         </Reveal>
