@@ -19,7 +19,7 @@ import BackToTop from './components/BackToTop.jsx'
 import Home from './components/sections/Home.jsx'
 import Tenants from './components/sections/Tenants.jsx'
 import Events from './components/sections/Events.jsx'
-import Promo from './components/sections/Promo.jsx'
+import Facilities from './components/sections/Facilities.jsx'
 import News from './components/sections/News.jsx'
 import AboutUs from './components/sections/AboutUs.jsx'
 import Contact from './components/sections/Contact.jsx'
@@ -31,14 +31,14 @@ export default function App() {
   }, [])
 
   return (
-    <div className="bg-brand-dark text-white font-body antialiased">
+    <div className="bg-brand-navyDark text-white font-body antialiased">
       <TopBar />
       <Navbar />
       <main>
         <Home />
         <Tenants />
         <Events />
-        <Promo />
+        <Facilities />
         <News />
         <AboutUs />
         <Contact />

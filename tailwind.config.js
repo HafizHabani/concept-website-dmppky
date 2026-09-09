@@ -5,17 +5,13 @@ export default {
     extend: {
       colors: {
         brand: {
-          orange: '#ff6b2b',
-          yellow: '#ffc94b',
-          dark: '#150a1f',
-          purple: '#2b1033',
-          maroon: '#3d0f2e',
-          pink: '#fde4ee',
-          mint: '#dcf5e2',
-          beige: '#f7efe2',
-          cream: '#faf6f1',
-          ink: '#221f35',
-          gray: '#2e2e38'
+          /* tema navy + gold — biru dongker sebagai identitas, gold sebagai aksen */
+          navy: '#10315f', // biru navy utama (aksen di area terang, header gelap)
+          gold: '#e2aa45', // aksen pendamping — tombol CTA, highlight
+          navyDark: '#081b36', // dasar gelap pekat (hero, footer, navbar)
+          deep: '#0d2a52', // navy menengah utk gradient dalam
+          cream: '#faf6f1', // latar terang hangat (section contact)
+          gray: '#2a3d61' // abu navy — fallback SafeImage & sel tanggal
         }
       },
       fontFamily: {
@@ -23,8 +19,8 @@ export default {
         body: ['Outfit', 'system-ui', 'sans-serif']
       },
       boxShadow: {
-        glow: '0 0 30px rgba(255, 107, 43, 0.35)',
-        card: '0 14px 32px rgba(21, 10, 31, 0.16)'
+        glow: '0 0 30px rgba(226, 170, 69, 0.35)',
+        card: '0 14px 32px rgba(13, 42, 82, 0.16)'
       }
     }
   },

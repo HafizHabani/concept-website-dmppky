@@ -5,23 +5,22 @@
 // ============================================================
 
 export const CONTACT = {
-  title: 'Interesad? Singaj dengan kami',
+  title: 'Tertarik? Hubungi kami',
   subtitle: 'Leasing, event, feedback — reach management@dutamallpky.co.id, kami jawab dalam 24 jam.',
-  toggle: ['Form Contact', 'Map Live'],
 
   form: {
-    submit: 'Send Pesan',
-    successTitle: 'Pesan send! 🎉',
-    successText: 'Salamat talu — team mall jawab dalam 24 jam.',
-    successAgain: 'Send pesan lainnya',
+    submit: 'Kirim Pesan',
+    successTitle: 'Pesan dikirim!',
+    successText: 'Ready 24 jam.',
+    successAgain: 'Kirim pesan lainnya',
     fields: [
-      { name: 'name', label: 'Nama lengkap*', type: 'text', placeholder: 'e.g. Alya Rahman', span: 2 },
-      { name: 'email', label: 'Adres email*', type: 'email', placeholder: 'lu@example.com', span: 2 },
+      { name: 'name', label: 'Nama lengkap*', type: 'text', placeholder: 'e.g. Rahman', span: 2 },
+      { name: 'email', label: 'Alamat email*', type: 'email', placeholder: 'lorem@example.com', span: 2 },
       {
         name: 'topic', label: 'Aku mau talk tentang*', type: 'select', span: 100,
-        options: ['Sual general', 'Leasing toko', 'Hosting event', 'Feedback & sugesti']
+        options: ['Pertanyaan umum', 'Leasing toko', 'Hosting event', 'Feedback & saran']
       },
-      { name: 'message', label: 'Pesan*', type: 'textarea', placeholder: 'Kawi kami semua…', span: 100 }
+      { name: 'message', label: 'Pesan*', type: 'textarea', placeholder: 'Kami siap mendengarkan…', span: 100 }
     ]
   },
 

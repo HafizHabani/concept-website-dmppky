@@ -9,22 +9,22 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background-color: #150a1f;
+  background-color: #081b36;
 }
 ::selection {
-  background: #ff6b2b;
-  color: #fff;
+  background: #e2aa45;
+  color: #081b36;
 }
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #ff6b2b;
+  background: #10315f;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-track {
-  background: #150a1f;
+  background: #081b36;
 }
 
 /* ---------- animasi custom (dipanggil di functions/animations.jsx & section components) ---------- */
@@ -43,20 +43,6 @@ body {
   }
   50% {
     transform: translate(26px, -30px) scale(1.12);
-  }
-}
-
-/* ticker marquee — track harus translate -50% karena content diduplicate */
-.anim-marquee {
-  display: inline-block;
-  animation: marquee 30s linear infinite;
-}
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 
@@ -106,7 +92,7 @@ body {
 
 /* hero word dengan gradient yang bergerak */
 .anim-gradient {
-  background: linear-gradient(92deg, #ff6b2b, #ffc94b, #ff9ec2, #ff6b2b);
+  background: linear-gradient(92deg, #e2aa45, #6ea8d8, #d6e2f2, #e2aa45);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -128,10 +114,10 @@ body {
 }
 @keyframes ping {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 43, 0.55);
+    box-shadow: 0 0 0 0 rgba(226, 170, 69, 0.55);
   }
   100% {
-    box-shadow: 0 0 0 18px rgba(255, 107, 43, 0);
+    box-shadow: 0 0 0 18px rgba(226, 170, 69, 0);
   }
 }
 
@@ -144,7 +130,7 @@ body {
   width: 5.5rem;
   padding: 0.6rem 0.25rem;
   border-radius: 1rem;
-  background: rgba(21, 10, 31, 0.55);
+  background: rgba(11, 36, 72, 0.55);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }

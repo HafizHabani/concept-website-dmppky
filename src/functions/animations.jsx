@@ -1,6 +1,6 @@
 // ============================================================
 // FUNCTIONS — animations.jsx
-// Semua animasi scroll-reveal & marquee. Section components tinggal panggil.
+// Semua animasi scroll-reveal. Section components tinggal panggil.
 // ============================================================
 
 import React, { useRef, useState, useEffect } from 'react'
@@ -59,22 +59,6 @@ export function Stagger({ items, render, className = '', base = 0, step = 90, th
           {render(item, i)}
         </Reveal>
       ))}
-    </div>
-  )
-}
-
-/** Marquee ticker: content diduplicate 2x, translate -50% loop mulus. */
-export function Marquee({ items, className = 'text-brand-yellow', speed = 30, separator = '✦' }) {
-  const doubled = [...items, ...items]
-  return (
-    <div className="overflow-hidden border-y border-white/10 bg-brand-dark/60 py-2.5" aria-hidden="true">
-      <div className="inline-block whitespace-nowrap anim-marquee" style={{ animationDuration: `${speed}s` }}>
-        {doubled.map((t, i) => (
-          <span key={i} className={`${className} text-sm tracking-wide mr-8`}>
-            {t} <span className="text-brand-orange">{separator}</span>
-          </span>
-        ))}
-      </div>
     </div>
   )
 }
