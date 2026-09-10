@@ -1,8 +1,5 @@
-// ============================================================
-// DATA — tenantsData.jsx
-// Daftar tenant Duta Mall Palangka Raya — dikelompokkan per lantai,
-// kartu bergradient per kategori.
-// ============================================================
+import bgMrDIY from '../assets/bg-tenant/bg-mrdiy.jpeg'
+import logoMrDIY from '../assets/logo-tenant/mrdiy.png'
 
 export const TENANTS_HEADER = {
   kicker: 'Tenant Directory',
@@ -33,7 +30,7 @@ export const TENANT_FLOORS = [
 
 export const TENANTS = [
   // ---- Lower Ground (LG) ----
-  { id: 1, name: 'MR.DIY', category: 'home', floor: 'LG', tag: 'ANCHOR', emoji: '🔧' },
+  { id: 1, name: 'MR.DIY', category: 'home', floor: 'LG', tag: 'ANCHOR', emoji: '🔧', logo: logoMrDIY, bgImage: bgMrDIY },
   { id: 2, name: 'Cermart', category: 'home', floor: 'LG', tag: 'ANCHOR', emoji: '🛒' },
   { id: 3, name: 'Maybank', category: 'services', floor: 'LG', tag: 'ANCHOR', emoji: '🏦' },
   { id: 4, name: 'Bakso Lapangan Tembak Senayan', category: 'food', floor: 'LG', tag: 'HOT', emoji: '🍜' },

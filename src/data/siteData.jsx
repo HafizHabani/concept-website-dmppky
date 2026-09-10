@@ -44,7 +44,7 @@ export const SITE = {
   stats: [
     { icon: '🏢', end: 6, suffix: '', label: 'Lantai Ritel' },
     { icon: '🛍️', end: 60, suffix: '+', label: 'Tenants' },
-    { icon: '📏', end: 150000, suffix: ' m²', label: 'Luas Parkiran' },
+    { icon: '📏', end: 3000, suffix: '+', label: 'Lot Parkir' },
     { icon: '🏨', end: 30, suffix: '', label: 'Open Booth' }
   ],
 
