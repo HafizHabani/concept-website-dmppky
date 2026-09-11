@@ -7,7 +7,7 @@
 // Data ← tenantsData.jsx · Function ← animations.jsx (Reveal/Stagger)
 // ============================================================
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { TENANTS_HEADER, TENANT_CATEGORIES, TENANT_FLOORS, TENANTS } from '../../data/tenantsData.jsx'
 import { Reveal, Stagger } from '../../functions/animations.jsx'
 
@@ -75,18 +75,20 @@ const Card = ({ t, className = '', compact = false }) => (
 const card = (t) => <Card t={t} />
 
 // ------------------------------------------------------------
-// FloorRow — satu baris horizontal kartu tumpang tindih untuk
-// lantai yang sedang aktif. Digeser via drag mouse (pointer
-// events custom) ATAU jari (native touch scroll, lebih mulus).
+// FloorRow — peek carousel: kartu seragam, kartu tengah utuh,
+// neighbors crop gedeeltelijk aan de randen (peek hint), swipe
+// horizontal + snap-center. Card design tidak berubah.
 // ------------------------------------------------------------
 const FloorRow = ({ tenants }) => {
   const scrollRef = useRef(null)
+  const cardRefs = useRef([])
   const drag = useRef({ down: false, startX: 0, startScroll: 0 })
 
   const onPointerDown = (e) => {
     if (e.pointerType !== 'mouse') return
     const el = scrollRef.current
     drag.current = { down: true, startX: e.clientX, startScroll: el.scrollLeft }
+    el.style.scrollSnapType = 'none' // drag smooth tanpa snap
     el.setPointerCapture(e.pointerId)
   }
   const onPointerMove = (e) => {
@@ -95,8 +97,29 @@ const FloorRow = ({ tenants }) => {
     el.scrollLeft = drag.current.startScroll - (e.clientX - drag.current.startX)
   }
   const onPointerUp = () => {
+    const el = scrollRef.current
     drag.current.down = false
+    if (el) el.style.scrollSnapType = ''
   }
+
+  const goTo = (i) => {
+    const el = scrollRef.current
+    const card = cardRefs.current[i]
+    if (!el || !card) return
+    const target = card.getBoundingClientRect().left - el.getBoundingClientRect().left - (el.clientWidth - card.offsetWidth) / 2
+    el.scrollTo({ left: el.scrollLeft + target, behavior: 'smooth' })
+  }
+
+  // Center-kan kartu pertama saat mount / lantai ganti — carousel
+  // dimulai dari tengah met neighbors peek.
+  useEffect(() => {
+    const el = scrollRef.current
+    if (el && cardRefs.current[0]) {
+      const first = cardRefs.current[0]
+      const target = first.getBoundingClientRect().left - el.getBoundingClientRect().left - (el.clientWidth - first.offsetWidth) / 2
+      el.scrollTo({ left: Math.max(0, el.scrollLeft + target), behavior: 'instant' })
+    }
+  }, [tenants])
 
   if (tenants.length === 0) {
     return <p className="px-4 text-center text-sm text-brand-navyDark/40">Belum ada tenant di lantai ini.</p>
@@ -110,12 +133,19 @@ const FloorRow = ({ tenants }) => {
       onPointerUp={onPointerUp}
       onPointerLeave={onPointerUp}
       onPointerCancel={onPointerUp}
-      className="flex overflow-x-auto scrollbar-none pl-4 pr-8 py-1 cursor-grab active:cursor-grabbing select-none"
+      className="flex items-stretch overflow-x-auto scrollbar-none snap-x snap-mandatory snap-center pl-10 pr-10 pt-2 pb-1 cursor-grab active:cursor-grabbing select-none"
       style={{ WebkitOverflowScrolling: 'touch', touchAction: 'pan-x' }}
     >
       {tenants.map((t, i) => (
-        <div key={t.id} className={i === 0 ? 'shrink-0' : 'shrink-0 -ml-9'} style={{ zIndex: i + 1 }}>
-          <Card t={t} compact className="w-32 border-2 border-white shadow-lg shadow-brand-navyDark/10" />
+        <div
+          key={t.id}
+          ref={(n) => {
+            cardRefs.current[i] = n
+          }}
+          onClick={() => goTo(i)}
+          className="shrink-0 snap-center py-2 mx-2"
+        >
+          <Card t={t} compact className="w-44 border-2 border-white shadow-lg shadow-brand-navyDark/10" />
         </div>
       ))}
     </div>

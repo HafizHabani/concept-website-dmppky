@@ -50,7 +50,7 @@ export default function Events() {
               muted
               playsInline
               preload="auto"
-              className="min-h-screen max-w-screen object-contain"
+              className="w-full h-auto object-contain"
             />
           </div>
         </Reveal>

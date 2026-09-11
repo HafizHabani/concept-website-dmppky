@@ -4,6 +4,8 @@
 // Section "Our Facility" (sebelumnya Promo) menampilkan ini.
 // ============================================================
 
+import bgAtm from '../assets/bg-tenant/bg-atmcenter.png'
+
 export const FACILITIES_HEADER = {
   kicker: 'Our Facility',
   title: 'Fasilitas di Duta Mall',
@@ -14,7 +16,7 @@ export const FACILITIES_HEADER = {
 export const FACILITIES = [
   { id: 'info', name: 'Information', desc: 'Pusat informasi', floor: 'LT GF', emoji: 'ℹ️' },
   { id: 'hotel', name: 'Hotel', desc: 'Hotel', floor: 'LT 4', emoji: '🏨' },
-  { id: 'atm', name: 'ATM Center', desc: 'Pusat ATM', floor: 'LT LG', emoji: '🏧' },
+  { id: 'atm', name: 'ATM Center', desc: 'Pusat ATM', floor: 'LT LG', emoji: '🏧', img: bgAtm },
   { id: 'ladies', name: 'Ladies Parking', desc: 'Parkir khusus wanita', floor: 'LT GF', emoji: '👩' },
   { id: 'disabled', name: 'Disabled Facilities', desc: 'Fasilitas untuk penyandang disabilitas', floor: 'LT GF & LT LG', emoji: '♿' },
   { id: 'clinic', name: 'Clinic', desc: 'Klinik', floor: 'LT GF', emoji: '🏥' },
